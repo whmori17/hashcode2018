@@ -43,11 +43,11 @@ class Map
     }
 
     public function getCoordinates($ride){
-        $rideCoordinates = [];
-        for($i = 0; $i < count($ride);$i++){
-            $rideCoordinates[] = [$ride[$i],$ride[$i+1]];
-            $i++;
-        }
-        return $rideCoordinates;
+        return [
+            'from'=>[$ride[0],$ride[1]],
+            'to'=>[$ride[2],$ride[3]],
+            's'=>$ride[4],
+            'f'=>$ride[5]
+        ];
     }
 }
