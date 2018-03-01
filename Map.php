@@ -34,8 +34,9 @@ class Map
         }
     }
 
-    public function calculateDistance($a, $b, $x, $y){
-        return fmod(($a-$x)) + fmod($b-$y);
+    public function calculateDistance($ride){
+        $rideCoordinates = $this->getCoordinates($ride);
+        return fmod(($rideCoordinates['from'][0] - $rideCoordinates['to'][0])) + fmod($rideCoordinates['from'][1] - $rideCoordinates['to'][1]);
     }
 
     public function getRideByPosition($position){
