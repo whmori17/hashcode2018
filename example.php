@@ -2,7 +2,9 @@
 require 'Map.php';
 
 /** @var Map $map */
-$map = new \Map('test.in');
+$file = "b_should_be_easy";
+
+$map = new \Map('dataset/'.$file.'.in');
 
 $rides = $map->map;
 
@@ -59,5 +61,5 @@ for($i = 0; $i < $map->T; $i++ ) {
 }
 
 foreach ($vehicles_results as $rides) {
-  file_put_contents('ouput.out',$rides['n_rides']." ".implode(' ', $rides['rides']).PHP_EOL,FILE_APPEND);
+  file_put_contents('output/'.$file.'.out',$rides['n_rides']." ".implode(' ', $rides['rides']).PHP_EOL,FILE_APPEND);
 }
