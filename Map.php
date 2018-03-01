@@ -37,4 +37,17 @@ class Map
     public function calculateDistance($a, $b, $x, $y){
         return fmod(($a-$x)) + fmod($b-$y);
     }
+
+    public function getRideByPosition($position){
+        return $this->map[$position];
+    }
+
+    public function getCoordinates($ride){
+        return [
+            'from'=>[$ride[0],$ride[1]],
+            'to'=>[$ride[2],$ride[3]],
+            's'=>$ride[4],
+            'f'=>$ride[5]
+        ];
+    }
 }

@@ -6,4 +6,8 @@ error_reporting(E_ALL);
 
 require_once 'Map.php';
 
-$pizza = new Map('test.in');
+$map = new Map('test.in');
+
+$ride = $map->getRideByPosition(0);
+$coordinates = $map->getCoordinates($ride);
+print_r($coordinates);
