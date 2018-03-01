@@ -50,4 +50,8 @@ class Map
             echo implode('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $this->map[$i]) . "<br><br>";
         }
     }
+
+    public function calculateDistance($a, $b, $x, $y){
+        return fmod(($a-$x)) + fmod($b-$y);
+    }
 }
