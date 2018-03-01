@@ -43,6 +43,7 @@ for($i = 0; $i < $map->T; $i++ ) {
     {
       // non ci sono auto disponibili
       if(!count_free_vehicles($vehicles_riding)) continue;
+
       $vehicle_avbl = $vh = get_free_vehicle($vehicles_riding);
       $vehicles_riding[$vehicle_avbl] = [$ride, $map->calculateDistance($ride) + $rides[$ride][4]];
     }
@@ -52,9 +53,11 @@ for($i = 0; $i < $map->T; $i++ ) {
       $vehicles_results[$vh]['n_rides']++;
       $vehicles_results[$vh]['rides'][] = $ride;
       $terminated_rides[] = $ride;
-      unset($vehicles_riding[$vh]);
+      $vehicles_riding[$vh] = null;
     }
   }
 }
 
-var_dump($vehicles_results);
+foreach ($vehicles_results as $rides) {
+  file_put_contents('ouput.out',$rides['n_rides']." ".implode(' ', $rides['rides']).PHP_EOL,FILE_APPEND);
+}
