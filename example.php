@@ -24,28 +24,32 @@ function count_free_vehicles($riding_vehicles) {
   return count(array_filter($riding_vehicles, function($item){ return $item === null; }));
 }
 
+function search_ride_assigned($ride, $vehicles_riding) {
+  foreach($vehicles_riding as  $vr) {
+    if($vr === $ride) return true;
+  }
+
+  return false;
+}
+
 
 
 for($i = 0; $i < $map->T; $i++ ) {
-  for($j = 0; $j < count($rides); $j++) {
+  for($ride = 0; $ride < count($rides); $ride++) {
     //se la corsa è già stata fatta -> next
-    if(in_array($j, $terminated_rides)) continue;
+    if(in_array($ride, $terminated_rides)) {continue;}
     //se la corsa non è stata assegnata
-    $ride = null;
-    if(false === ($ride = array_search($j, $vehicles_riding)))
+    if(false === (search_ride_assigned($ride, $vehicles_riding)))
     {
       // non ci sono auto disponibili
       if(!count_free_vehicles($vehicles_riding)) continue;
-      $ride = $j;
       $vehicle_avbl = get_free_vehicle($vehicles_riding);
       $vehicles_riding[$vehicle_avbl] = $ride;
     }
 
-
-
   }
 
-  die;
+  break;
 }
 
 var_dump($vehicles_riding);
