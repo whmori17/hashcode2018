@@ -34,10 +34,15 @@ class Map
         }
     }
 
+    public function calculateModuleOfDifference($a, $b){
+        return abs(($a-$b));
+    }
+
     public function calculateDistance($ride){
         $rideCoordinates = $this->getCoordinates($ride);
-        return fmod(($rideCoordinates['from'][0] - $rideCoordinates['to'][0])) + fmod($rideCoordinates['from'][1] - $rideCoordinates['to'][1]);
+        return $this->calculateModuleOfDifference($rideCoordinates['from'][0], $rideCoordinates['to'][0]) + $this->calculateModuleOfDifference($rideCoordinates['from'][1], $rideCoordinates['to'][1]);
     }
+
 
     public function getRideByPosition($position){
         return $this->map[$position];

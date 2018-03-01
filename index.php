@@ -9,5 +9,5 @@ require_once 'Map.php';
 $map = new Map('test.in');
 
 $ride = $map->getRideByPosition(0);
-$coordinates = $map->getCoordinates($ride);
-print_r($coordinates);
+$distance = $map->calculateDistance($ride);
+print_r($distance);
