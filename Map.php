@@ -38,7 +38,8 @@ class Map
         return abs(($a-$b));
     }
 
-    public function calculateDistance($ride){
+    public function calculateDistance($ridePosition){
+        $ride = $this->getRideByPosition($ridePosition);
         $rideCoordinates = $this->getCoordinates($ride);
         return $this->calculateModuleOfDifference($rideCoordinates['from'][0], $rideCoordinates['to'][0]) + $this->calculateModuleOfDifference($rideCoordinates['from'][1], $rideCoordinates['to'][1]);
     }
